@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{sduthesis}[2015/05/12 v1.0.5 Shandong University Thesis Template for Postgraduate]
 %------解决表格换行问题-------
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}  
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 %------解决表格换行问题-------
 
 % ----- KVoptions Packages -----
@@ -254,7 +254,7 @@
 %----章节样式----
 %--chapter
 \CTEXsetup[name={第,章}]{chapter}
-\CTEXsetup[number={\chinese{chapter}}]{chapter}
+\CTEXsetup[number={\arabic{chapter}}]{chapter}
 \CTEXsetup[format={\centering}]{chapter}
 \CTEXsetup[nameformat={\bfseries\zihao{3}}]{chapter}
 \CTEXsetup[titleformat={\bfseries\zihao{3}}]{chapter}
