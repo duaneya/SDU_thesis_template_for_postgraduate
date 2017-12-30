@@ -11,18 +11,20 @@
 \newtoks\Csuperver	     % 导师
 \newtoks\Ccosuperver     % 合作导师
 \newtoks\Cdate		     % 中文日期
+\newtoks\Csubmitdate     % 中文提交日期
+\newtoks\Esubmitdate     % 英文提交日期
 \newtoks\Dpart		     % 学院
 \newtoks\Grade		     % 年级
 \newtoks\ThesisHeader	 % 正文页眉
 \newtoks\EThesisHeader   % 英文页眉
 
 \RequirePackage{makecell}
-\newcommand{\LeftLength}{3.5cm}
-\newcommand{\RightLength}{4.5cm}
-\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{4}\bfseries\songti{}#1}}}
-\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{-4}\heiti{}#1}}}
+\newcommand{\LeftLength}{3cm}
+\newcommand{\RightLength}{5cm}
+\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{-3}\bfseries\songti{}#1}}}
+\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{4}\bfseries\heiti{}#1}}}
 \newcommand{\TopTitleLeft}[1]{\makebox[2cm][s]{{\zihao{4}\bfseries\songti{}#1}}}
-\newcommand{\TopTitleRight}[1]{\makebox[2.5cm][l]{{\zihao{4}\heiti{}#1}}}
+\newcommand{\TopTitleRight}[1]{\makebox[2.5cm][l]{{\zihao{4}\bfseries\heiti{}#1}}}
 
 \newcommand{\maketitlepage}{%
 	\thispagestyle{empty}
@@ -37,40 +39,37 @@
 		\vskip 12mm\relax
 
 		{
-			{\includegraphics[width = .5\textwidth]{SDUWords.jpg}}\\[4mm]
-			{\scalebox{4}{\fzbHei{}\the\CThesisType}}\\[4mm]
+			{\includegraphics[width = .5\textwidth]{SDUWords.jpg}}\\[6mm]
+			{\scalebox{3.5}{\bfseries\fzbHei{}\the\CThesisType}}\\[4mm]
 			{\scalebox{1.5}{\fzbHei{}\the\EThesisType}}\\
 %			{\heiti{}（专业学位）}  % 科学学位请将本行注释掉
 		}
 		%\par \vskip 20mm \relax
 		{
 			\begin{flushleft}
-				{\zihao{-2}\songti{}论文题目：}
-				\zihao{-2}\heiti\the\Ctitle\\
+			\begin{tabular}{ll}
+				{\zihao{-2}\bfseries\songti{}论文题目:}&
+				{\zihao{-2}\bfseries\heiti\the\Ctitle\vspace{2mm}}\\
+				&
+				{\zihao{3}\bfseries\heiti\the\Etitle}
+			\end{tabular}
 			\end{flushleft}
 		}
 
-		{
-		%	\noindent
-		%	\zihao{-1}\heiti\the\Ctitle\\
-			\vskip 2mm
-			\zihao{3}\songti\bfseries\the\Etitle
-		}
 		\vfill
 		{
 			\begin{tabular}{p{\LeftLength}p{\RightLength}}
-				\Mcs{作\quad者\quad姓\quad名}& \Mcc{\the\Cauthor}\\[-.8mm]\cline{2-2}\\[-4mm]
-				%\Mcs{学号}& \Mcc{\the\StuNum}\\[-.8mm]\cline{2-2}\\[-4mm]
-				\Mcs{培\quad养\quad单\quad位}& \Mcc{\the\Dpart}\\[-.8mm]\cline{2-2}\\[-4mm]
-				\Mcs{专\quad业\quad名\quad称}& \Mcc{\the\Cmajor}\\[-.8mm]\cline{2-2}\\[-4mm]
-				%\Mcs{年级}& \Mcc{\the\Grade}\\[-.8mm]\cline{2-2}\\[-4mm]
-				\Mcs{指\quad导\quad教\quad师}& \Mcc{\the\Csuperver}\\[-.8mm]\cline{2-2}\\[-4mm]
-				\Mcs{合\quad作\quad导\quad师}& \Mcc{\the\Ccosuperver}\\[-.8mm]\cline{2-2}
+				\Mcs{作~~者~~姓~~名}& \Mcc{\the\Cauthor}\\[-.8mm]\cline{2-2}\\[-3mm]
+				\Mcs{学~~院~~名~~称}& \Mcc{\the\Dpart}\\[-.8mm]\cline{2-2}\\[-3mm]
+				\Mcs{专~~业~~名~~称}& \Mcc{\the\Cmajor}\\[-.8mm]\cline{2-2}\\[-3mm]
+				\Mcs{指~~导~~教~~师}& \Mcc{\the\Csuperver}\\[-.8mm]\cline{2-2}\\[-3mm]
+				\Mcs{合~~作~~导~~师}& \Mcc{\the\Ccosuperver}\\[-.8mm]\cline{2-2}
 			\end{tabular}
 		}
 		\par \vskip 20mm \relax
 		{
-			\zihao{3}\bfseries\the\Cdate
+			%\zihao{3}\bfseries\the\Cdate
+			\zihao{4}\heiti\the\Csubmitdate
 		}
 	\end{center}
 	\clearpage
