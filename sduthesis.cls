@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{sduthesis}[2015/05/12 v1.0.5 Shandong University Thesis Template for Postgraduate]
 %------解决表格换行问题-------
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}  
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 %------解决表格换行问题-------
 
 % ----- KVoptions Packages -----
@@ -24,11 +24,12 @@
 % ----- Default Options
 \DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexcap}}
 % A4纸张大小，书记格式
-\LoadClass[a4paper, 12pt]{book}
+%\LoadClass[a4paper, 12pt]{book}
+\LoadClass[a4paper, 12pt, openany]{book} %openany选项能去除空白页
 \ProcessKeyvalOptions*\relax
 
 \ifSDU@opt@double\relax\else
-	\PassOptionsToClass{openany}{book}
+	\PassOptionsToClass{openany}{ctexcap}
 \fi
 %------print------
 
@@ -76,20 +77,31 @@
 \makeatother
 %----页眉划线----
 
+%----页脚划线----
+\newcommand{\makefootrule}{
+\makebox[0pt][l]{\rule[0.55\baselineskip]{\headwidth}{1.pt}}}
+
+\makeatletter
+\renewcommand{\footrule}{%
+{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
+\makefootrule}}
+\makeatother
+%----页眉划线----
+
 %----眉脚内容----
 % ----------页眉----------
 \pagestyle{fancy}
 \fancyhf{}
 \makeatletter
 \ifSDU@opt@chsstyle
-\chead{\zihao{5}\the\ThesisHeader}% 山东大学硕士学位论文
+\chead{\bfseries\songti\zihao{-4}\ziju{0.2}\the\ThesisHeader}% 山东大学硕士学位论文
 \else
 \chead{\small \the\EThesisHeader}
 \fi
 \makeatother
 % ----------页脚----------
 %\cfoot{--{~\thepage~}--}  % 页码居中显示
-\fancyfoot[LE,RO]{--{~\thepage~}--}   % 页码居外侧显示
+\fancyfoot[LE,RO]{\zihao{-5} ~\thepage~}   % 页码居外侧显示
 %----眉脚内容----
 %------页眉页脚------
 
@@ -126,6 +138,10 @@
 \RequirePackage{amsmath}
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
+\numberwithin{equation}{chapter}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 %----编号----
 %----不浮动----
 \makeatletter
@@ -195,10 +211,6 @@
 \newcommand\esubsubsection[1]{\addengcontents{subsubsection}{#1}}
 %—————————English Contents—————————————
 
-%------参考文献------
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
-%------参考文献------
-
 %------摘要环境------
 \newcommand\enabstractname{ABSTRACT}
 \newcommand\enkeywordsname{Key words}
@@ -211,7 +223,8 @@
 %	\centering
 %	\begin{minipage}{.85\textwidth}	%20150305 COMMENT%
 	\phantomsection
-	\centerline{\vspace{.3cm}\zihao{-3}\bfseries\enabstractname}\vspace{.3cm}
+	\chapter*{ABSTRACT}
+	%\centerline{\vspace{.3cm}\zihao{-3}\bfseries\enabstractname}\vspace{.3cm}
 	\addcontentsline{toc}{chapter}{ABSTRACT} %使目录中以章级别显示“Abstract”
 	\addcontentsline{toe}{chapter}{ABSTRACT}
 	\setlength{\parindent}{1.2em}
@@ -232,7 +245,8 @@
 %	\centering
 %	\begin{minipage}[c]{.85\textwidth}
 	\phantomsection
-	\centerline{\vspace{.3cm}\zihao{-3}\bfseries\cnabstractname}\vspace{.3cm} %20150305 ADD%
+	\chapter*{摘\quad{}要}
+	%\centerline{\vspace{.3cm}\zihao{-3}\bfseries\cnabstractname}\vspace{.3cm} %20150305 ADD%
 	\addcontentsline{toc}{chapter}{摘\quad{}要} %使目录中以章级别显示“摘要”
 	\addcontentsline{toe}{chapter}{Chinese Abstract}
 	\setlength{\parindent}{2em}
@@ -254,13 +268,13 @@
 %----章节样式----
 %--chapter
 \CTEXsetup[name={第,章}]{chapter}
-\CTEXsetup[number={\chinese{chapter}}]{chapter}
+\CTEXsetup[number={\arabic{chapter}}]{chapter}
 \CTEXsetup[format={\centering}]{chapter}
-\CTEXsetup[nameformat={\bfseries\zihao{3}}]{chapter}
-\CTEXsetup[titleformat={\bfseries\zihao{3}}]{chapter}
+\CTEXsetup[nameformat={\bfseries\zihao{-3}}]{chapter}
+\CTEXsetup[titleformat={\bfseries\zihao{-3}}]{chapter}
 \CTEXsetup[aftername={\quad{}}]{chapter}
-\CTEXsetup[beforeskip={10pt}]{chapter}
-\CTEXsetup[afterskip={10pt}]{chapter}
+\CTEXsetup[beforeskip={6pt}]{chapter}
+\CTEXsetup[afterskip={14pt}]{chapter}
 %--section
 % \CTEXsetup[name={$\S$\,,}]{section} % 去掉章节前的双S花符号
 \CTEXsetup[format={\bfseries\flushleft\zihao{4}}]{section}
@@ -272,15 +286,79 @@
 \CTEXsetup[name={附录~}]{appendix}
 \CTEXsetup[number={\Alph{chapter}}]{appendix}
 %----------致谢---------------------
-\newcommand{\acknowledgment}
-{
-	\clearpage  %加这个命令后，目录中的页码才显示正确
-	\phantomsection %加这个命令后，目录中的超链接才指向正确的页码	
-	\chapter*{致\hspace{4ex}谢} %开始一段不带编号的章
+\newenvironment{acknowledgment}{%
+    \clearpage
+	\phantomsection
+	\chapter*{致\quad{}谢}
+	%\centerline{\bfseries\zihao{-3} 致\quad{}谢}
 	\addcontentsline{toc}{chapter}{致\quad{}谢} %使目录中以章级别显示“致谢”
 	\addcontentsline{toe}{chapter}{Acknowledgement}
+	\setlength{\parindent}{2em}
+	\zihao{-4}
+}{
+\clearpage
 }
 %----------致谢---------------------
+%----------已发表论文---------------------
+\newenvironment{publications}{%
+	\clearpage
+	\phantomsection
+	\chapter*{攻读学位期间发表的学术论文目录}
+	%\centerline{\bfseries\zihao{-3} 攻读学位期间发表的学术论文目录}
+	\addcontentsline{toc}{chapter}{攻读学位期间发表的学术论文目录} %使目录中以章级别显示
+	\addcontentsline{toe}{chapter}{List of Published Papers}
+}{
+\clearpage
+}
+%----------已发表论文---------------------
+%----------已参与项目---------------------
+\newenvironment{projects}{%
+	\clearpage
+	\phantomsection
+	\chapter*{攻读学位期间参与科研项目情况}
+	%\centerline{\bfseries\zihao{-3} 攻读学位期间参与科研项目情况}
+	\addcontentsline{toc}{chapter}{攻读学位期间参与科研项目情况} %使目录中以章级别显示
+	\addcontentsline{toe}{chapter}{List of Participated Projects}
+}{
+\clearpage
+}
+%----------已参与项目---------------------
+%----------外文论文---------------------
+\newenvironment{enpapers}{%
+	\clearpage
+	\phantomsection
+	\centerline{\bfseries\zihao{-3} 外文论文}
+	\addcontentsline{toc}{chapter}{外文论文} %使目录中以章级别显示
+	\addcontentsline{toe}{chapter}{Papers In English}
+}{
+\clearpage
+}
+%----------外文论文---------------------
+
+%----------参考文献-----------------------
+% 参考文献格式调整需要natbib包
+% sort&compress参数用于按引用顺序排列参考文献
+% longnamesfirst参数用于处理长人名顺序，将first name排前面，用于外国人名
+% square参数，引用标号用方括号括起
+% super参数，引用标号为上标格式
+% comma参数，引用标号之间为逗号
+\RequirePackage[sort&compress,longnamesfirst,square,super,comma]{natbib}
+
+\newcommand\sduthesisbib[1]{%
+\setcitestyle{numbers, round, comma, aysep={}, yysep={,}, notesep={,}}
+\setlength{\bibsep}{0.5ex}
+\setlength{\bibhang}{2em}
+\renewcommand{\bibfont}{\zihao{5}}
+
+\phantomsection
+\addcontentsline{toe}{chapter}{References}
+\bibliographystyle{sduthesis}
+\bibliography{#1}
+}
+
+%\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+%----------参考文献-----------------------
+
 %----章节样式----
 %----首行缩进----
 \RequirePackage{indentfirst}
@@ -293,13 +371,28 @@
 \input{sduthesis-front-cover.def}
 %------封面------
 
+%------封面------
+\input{sduthesis-front-cover_en.def}
+%------封面------
+
 %------声明------
 \input{sduthesis-statement.def}
 %------声明------
 
+%------学位论文评阅及答辩情况表------
+% 合并表格行用到的包
+\RequirePackage{multirow}
+\RequirePackage{textcomp}
+\input{sduthesis-defence-sheet.def}
+%------学位论文评阅及答辩情况表------
+
 %------Make------
 \newcommand{\maketitlepagestatement}{%
   \maketitlepage
+  \thispagestyle{empty}
+  ~
+  \vfill\eject
+  \makeentitlepage
   \thispagestyle{empty}
   ~
   \vfill\eject

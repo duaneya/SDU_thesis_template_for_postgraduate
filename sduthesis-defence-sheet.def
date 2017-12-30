@@ -1,0 +1,58 @@
+\newcommand{\makedefencesheet}
+{
+\cleardoublepage
+\thispagestyle{empty}
+{
+
+\begin{center}
+\bf\heiti\zihao{-3}{学位论文评阅及答辩情况表}\\
+\vspace{1cm}
+\fangsong\zihao{4}	
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{6}{*}{\tabincell{c}{论\\ 文\\ 评\\ 阅\\ 人}} & \multicolumn{2}{|c|}{姓\quad\quad名} & \tabincell{c}{专业技术\\职\quad\quad 务} & \tabincell{c}{是否博导\\ （硕导）} & \multicolumn{2}{|c|}{所~在~单~位} & \tabincell{c}{总体评价\\ ※
+}\\
+ \cline{2-8}
+ &  \multicolumn{2}{|c|}{} & &  & \multicolumn{2}{|c|}{} &  \\
+ \cline{2-8}
+ &  \multicolumn{2}{|c|}{} & &  & \multicolumn{2}{|c|}{} &  \\
+ \cline{2-8}
+ &  \multicolumn{2}{|c|}{} & &  & \multicolumn{2}{|c|}{} &  \\
+ \cline{2-8}
+ &  \multicolumn{2}{|c|}{} & &  & \multicolumn{2}{|c|}{} &  \\
+ \cline{2-8}
+ &  \multicolumn{2}{|c|}{} & &  & \multicolumn{2}{|c|}{} &  \\
+\hline
+\multirow{10}{*}{\tabincell{c}{答\\辩\\委\\员\\会\\成\\员}} &\multicolumn{2}{|c|}{姓\quad\quad名} & \tabincell{c}{专业技术\\职\quad\quad 务} & \tabincell{c}{是否博导\\ （硕导）} & \multicolumn{3}{|c|}{所~在~单~位} \\
+ \cline{2-8}
+ & 主席 & &  &  &  \multicolumn{3}{|c|}{}  \\
+ \cline{2-8}
+ & \multirow{8}{*}{\tabincell{c}{委\\  \\ \\ \\员}}& &  &  &   \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &  & &  &  &  \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &   & &  &  & \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &   & &  &  &  \multicolumn{3}{|c|}{} \\
+  \cline{3-8}
+ & & &  &  &   \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &  & &  &  &  \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &   & &  &  & \multicolumn{3}{|c|}{} \\
+ \cline{3-8}
+ &   & &  &  &  \multicolumn{3}{|c|}{} \\
+\hline
+\multicolumn{3}{|c|}{\tabincell{c}{答辩委员会对论\\文的总体评价※
+}} & & \tabincell{c}{答辩\\ 秘书} & \quad\quad\quad~\quad & \tabincell{c}{答辩\\ 日期} & \\
+\hline
+\multicolumn{2}{|c|}{备注} & \multicolumn{6}{|c|}{} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+\fangsong\zihao{5}{※优秀为“A”；良好为“B”；合格为“C”；不合格为“D”。}
+\end{center}
+
+}
+}

@@ -1,0 +1,55 @@
+\newtoks\fenlei		     % 中图分类号
+\newtoks\DWdaihao	     % 单位代号
+\newtoks\miji		     % 密级
+\newtoks\StuNum		     % 学号
+\newtoks\CThesisType     % 论文类型 中
+\newtoks\EThesisType     % 论文类型 英
+\newtoks\Ctitle		     % 中文标题
+\newtoks\Etitle		     % 英文标题
+\newtoks\Cauthor	     % 作者中文名
+\newtoks\Eauthor	     % 作者英文名
+\newtoks\Cmajor		     % 专业
+\newtoks\Csuperver	     % 导师
+\newtoks\Esuperver	     % 导师英文名
+\newtoks\Ccosuperver     % 合作导师
+\newtoks\Cdate		     % 中文日期
+\newtoks\Csubmitdate     % 中文提交日期
+\newtoks\Esubmitdate     % 英文提交日期
+\newtoks\Dpart		     % 学院
+\newtoks\Grade		     % 年级
+\newtoks\Eaddress        % 英文地址
+\newtoks\ThesisHeader	 % 正文页眉
+\newtoks\EThesisHeader   % 英文页眉
+
+% 这个地方插入了英文标题页
+\newcommand{\makeentitlepage}
+{
+	\thispagestyle{empty}
+
+	\linespread{1.5}
+	\centerline{}
+	\vspace{0.45cm}
+		
+	\begin{center}
+		% 英文论文题目
+		\zihao{3}\bfseries\heiti\the\Etitle\\
+		
+		\vspace{3.8cm}
+
+		\textnormal{\zihao{-3}by}\\
+		\zihao{-3}\bfseries\heiti\the\Eauthor\\
+		% 导师英文签名
+		\textnormal{\zihao{-3}Supervisor:~\the\Esuperver}\\
+		
+		\vspace{3.5cm}
+		
+		\bfseries\zihao{-3}For the degree of\\
+		\bfseries\zihao{-3}Doctor of Philosophy
+		
+		\vspace{5.5cm}
+		
+		\bfseries\zihao{-3}\the\Eaddress\\
+		\bfseries\zihao{-3}\the\Esubmitdate 
+	\end{center}
+	\clearpage
+}
